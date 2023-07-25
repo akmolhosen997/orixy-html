@@ -183,7 +183,10 @@ function enableMasonry2  () {
 
 enableMasonry2();
 
-
+// data background
+$("[data-background]").each(function(){
+	$(this).css("background-image","url("+$(this).attr("data-background") + ") ")
+})
 
 // data width
 $("[data-width]").each(function(){
