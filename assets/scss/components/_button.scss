@@ -1,0 +1,119 @@
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+// default theme btn 
+
+.orixy-btn-1 {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 21px 40px;
+  position: relative;
+  display: inline-block;
+  border-radius: 35px;
+  letter-spacing: 1.96px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--clr-common-white);
+  @media #{$xs} {
+    padding: 15px 25px;
+  }
+  @media #{$sm} {
+    padding: 21px 40px;
+  }
+  &::after {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 70px;
+    content: "";
+    height: 100%;
+    position: absolute;
+    border-radius: 100%;
+    @include transition(.5s);
+    background-color: var(--clr-theme-primary);
+    @media #{$xs} {
+      width: 55px;
+    }
+    @media #{$sm} {
+      width: 70px;
+    }
+  }
+  &:hover {
+    color: var(--clr-common-white);
+    &::after {
+      width: 100%;
+      border-radius: 35px;
+    }
+  }
+}
+
+
+//   banner play btn 
+
+.play-btn {
+    width: 120px;
+    height: 120px;
+    font-size: 16px;
+    color: var(--clr-common-white);
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    background: var(--clr-common-black-soft);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    @include transition(.5s);
+    margin: 0 auto;
+    @media #{$xs} {
+      width: 80px;
+      height: 80px;
+      font-size: 14px;
+    }
+    @media #{$sm} {
+      width: 120px;
+      height: 120px;
+      font-size: 16px;
+    }
+    &:hover {
+        background-color: var(--clr-hover-primary);
+        border: var(--clr-hover-primary);
+        color: var(--clr-common-white);
+    }
+    &::after, &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: "";
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #cccccc;
+        animation-name: popupBtn;
+        animation-duration: 1.8s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    &:before {
+        animation-delay: 0.8s;
+    }
+}
+  
+  // play btn keyframe
+@keyframes popupBtn {
+    0% {
+      transform: scale(1);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.6);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+}
